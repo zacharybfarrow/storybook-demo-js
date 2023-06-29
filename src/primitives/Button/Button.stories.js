@@ -4,7 +4,7 @@ import { within, userEvent } from '@storybook/testing-library';
 
 // Metadata
 export default {
-    title: 'Button',
+    title: 'Primitives/Button',
     component: Button,
     tags: ['autodocs'],
     argTypes: {
