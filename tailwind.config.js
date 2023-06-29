@@ -2,7 +2,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const themeConfig = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
       xs: '0px',

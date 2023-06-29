@@ -17,27 +17,27 @@ import PropTypes from 'prop-types'
 
 export const Button = React.forwardRef(function Button(
   {
-    //as,
-    //children,
-    //className,
-    //disabled,
-    //fullWidth,
-   // href,
-    //iconLabel,
+    as,
+    children,
+    className,
+    disabled = false,
+    fullWidth,
+    href,
+    iconLabel,
     icon,
     isIconOnly,
-    //kind,
+    kind = 'SOLID',
     onBlur,
     onClick,
     onFocus,
     onMouseEnter,
     onMouseLeave,
-    //rounded,
-    //size,
-    //tabIndex,
-    //type,
-    //uppercase,
-    //variant,
+    rounded = 'SQUARE',
+    size = 'SMALL',
+    tabIndex,
+    type,
+    uppercase = false,
+    variant = 'PRIMARY',
     ...rest
   },
   ref
@@ -59,18 +59,18 @@ export const Button = React.forwardRef(function Button(
     uppercase ? 'uppercase' : '',
     className,
   ]) */
-  const commonProps = { /* tabIndex, className, */ ref }
-  //const anchorProps = { href }
+  const commonProps = { tabIndex, className, ref }
+  const anchorProps = { href }
 
   let additionalProps = {
-/*     disabled,
-    type, */
+    disabled,
+    type,
     // add aria props
   }
 
   let component = 'button'
 
-/*   if (as) {
+  if (as) {
     component = as
     additionalProps = {
       ...additionalProps,
@@ -79,7 +79,7 @@ export const Button = React.forwardRef(function Button(
   } else if (href && !disabled) {
     component = 'a'
     additionalProps = anchorProps
-  } */
+  }
 
 /*   const ButtonIconElement = !icon ? null : (
     <Icon
@@ -104,7 +104,7 @@ export const Button = React.forwardRef(function Button(
       ...commonProps,
       ...additionalProps,
     },
-    //children,
+    children,
    // ButtonIconElement
   )
 
@@ -115,6 +115,7 @@ export const Button = React.forwardRef(function Button(
 })
 
 Button.propTypes = {
+  disabled: PropTypes.bool,
   /**
    * Specifies if the Button element should fit the width of its parent container
    */
@@ -158,11 +159,11 @@ Button.propTypes = {
 }
 
 // re-enable after all props expressed in proptypes?
-/* Button.defaultProps = {
+Button.defaultProps = {
   disabled: false,
   kind: 'SOLID',
   rounded: 'SQUARE',
   size: 'SMALL',
   uppercase: false,
   variant: 'PRIMARY',
-} */
+}
