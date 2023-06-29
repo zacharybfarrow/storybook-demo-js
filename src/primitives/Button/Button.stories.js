@@ -1,4 +1,5 @@
 import {Button} from './Button'
+import { action } from '@storybook/addon-actions'
 
 // Metadata
 export default {
@@ -14,24 +15,36 @@ export default {
 
 export const Solid = {
     args: {
-        kind: 'SOLID'
+        kind: 'SOLID',
+        variant: 'ACTION',
+        onClick: action('onClick'),
+        children: 'Button',
     }
 }
 
 export const Outline = {
     args: {
-        kind: 'OUTLINE'
+        kind: 'OUTLINE',
+        variant: 'ACTION',
+        onClick: action('onClick'),
+        children: 'Button',
     }
 }
 
 export const Ghost = {
     args: {
-        kind: 'GHOST'
+        kind: 'GHOST',
+        variant: 'ACTION',
+        onClick: action('onClick'),
+        children: 'Button',
     }
 }
 
 export const Tinted = {
     args: {
-        kind: 'TINTED'
+        kind: 'TINTED',
+        variant: 'ACTION',
+        onClick: action('onClick'),
+        children: 'Button',
     }
 }

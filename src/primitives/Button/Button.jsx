@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 //import Icon, { ICON_KEY } from '../../assets/icon'
 import { cx } from '../../utils'
 
-/* import {
+import {
   ButtonIconSize,
   ButtonKind,
   ButtonRadius,
   ButtonSize,
   ButtonTheme,
   ButtonVariant,
-} from './config' */
+} from './config'
 
 // eslint-disable-next-line
 
@@ -52,9 +52,9 @@ export const Button = React.forwardRef(function Button(
     'transition-all',
     'outline-transparent',
     'focus:outline-blue-500',
-    //ButtonRadius[rounded],
-    //ButtonTheme[`${variant}-${kind}`],
-    //ButtonSize[size],
+    ButtonRadius[rounded],
+    ButtonTheme[`${variant}-${kind}`],
+    ButtonSize[size],
     fullWidth && 'w-full',
     uppercase ? 'uppercase' : '',
     className,
