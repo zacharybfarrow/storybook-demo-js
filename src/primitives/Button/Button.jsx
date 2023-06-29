@@ -14,29 +14,30 @@ import PropTypes from 'prop-types'
 } from './config' */
 
 // eslint-disable-next-line
-export const ButtonZ = React.forwardRef(function Button(
+
+export const Button = React.forwardRef(function Button(
   {
-    as,
-    children,
-    className,
-    disabled = false,
+    //as,
+    //children,
+    //className,
+    //disabled,
     //fullWidth,
-    href,
+   // href,
     //iconLabel,
     icon,
     isIconOnly,
-    //kind = 'SOLID',
+    //kind,
     onBlur,
     onClick,
     onFocus,
     onMouseEnter,
     onMouseLeave,
-   // rounded = 'SQUARE',
-    //size = 'SMALL',
-    tabIndex,
-    type,
-    //uppercase = false,
-    //variant = 'PRIMARY',
+    //rounded,
+    //size,
+    //tabIndex,
+    //type,
+    //uppercase,
+    //variant,
     ...rest
   },
   ref
@@ -58,18 +59,18 @@ export const ButtonZ = React.forwardRef(function Button(
     uppercase ? 'uppercase' : '',
     className,
   ]) */
-  const commonProps = { tabIndex, className, ref }
-  const anchorProps = { href }
+  const commonProps = { /* tabIndex, className, */ ref }
+  //const anchorProps = { href }
 
   let additionalProps = {
-    disabled,
-    type,
+/*     disabled,
+    type, */
     // add aria props
   }
 
   let component = 'button'
 
-  if (as) {
+/*   if (as) {
     component = as
     additionalProps = {
       ...additionalProps,
@@ -78,7 +79,7 @@ export const ButtonZ = React.forwardRef(function Button(
   } else if (href && !disabled) {
     component = 'a'
     additionalProps = anchorProps
-  }
+  } */
 
 /*   const ButtonIconElement = !icon ? null : (
     <Icon
@@ -103,7 +104,7 @@ export const ButtonZ = React.forwardRef(function Button(
       ...commonProps,
       ...additionalProps,
     },
-    children,
+    //children,
    // ButtonIconElement
   )
 
@@ -113,7 +114,7 @@ export const ButtonZ = React.forwardRef(function Button(
   return Button
 })
 
-ButtonZ.propTypes = {
+Button.propTypes = {
   /**
    * Specifies if the Button element should fit the width of its parent container
    */
@@ -137,15 +138,15 @@ ButtonZ.propTypes = {
   /**
    * Specifies the kind of Button element that is render
    */
-  kind: PropTypes.oneOf('SOLID','OUTLINE','GHOST','TINTED').isRequired,
+  kind: PropTypes.oneOf(['SOLID','OUTLINE','GHOST','TINTED']).isRequired,
   /**
    * Specifies the amount of border radius added to the Button element
    */
-  rounded: PropTypes.oneOf('XSMALL','SMALL','MEDIUM','LARGE','XLARGE','XLARGE','XXLARGE','CIRCLE','SQUARE'),
+  rounded: PropTypes.oneOf(['XSMALL','SMALL','MEDIUM','LARGE','XLARGE','XLARGE','XXLARGE','CIRCLE','SQUARE']),
   /**
    * Specifies the height of the Button element.
    */
-  size: PropTypes.oneOf('XSMALL','SMALL','MEDIUM','LARGE','XLARGE'),
+  size: PropTypes.oneOf(['XSMALL','SMALL','MEDIUM','LARGE','XLARGE']),
   /**
    * Specifies the CSS 'text-transform' property of the button element determining the casing of the 'labelText' attribute
    */
@@ -153,5 +154,15 @@ ButtonZ.propTypes = {
   /**
    * Specifies the color scheme of Button element that is render
    */
-  variant: PropTypes.oneOf('PRIMARY','ACTION','ACCENT','DANGER','SUCCESS','WARNING')
+  variant: PropTypes.oneOf(['PRIMARY','ACTION','ACCENT','DANGER','SUCCESS','WARNING'])
 }
+
+// re-enable after all props expressed in proptypes?
+/* Button.defaultProps = {
+  disabled: false,
+  kind: 'SOLID',
+  rounded: 'SQUARE',
+  size: 'SMALL',
+  uppercase: false,
+  variant: 'PRIMARY',
+} */
