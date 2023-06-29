@@ -1,5 +1,6 @@
 import {Button} from './Button'
 import { action } from '@storybook/addon-actions'
+import { within, userEvent } from '@storybook/testing-library';
 
 // Metadata
 export default {
@@ -27,7 +28,12 @@ export const Solid = {
         variant: 'ACTION',
         onClick: action('onClick'),
         children: 'Button',
-    }
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement)
+        const button = canvas.getByRole('button')
+        await userEvent.click(button)
+      },
 }
 
 export const Outline = {
