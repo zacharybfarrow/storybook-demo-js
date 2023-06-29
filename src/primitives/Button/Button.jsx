@@ -2,7 +2,7 @@ import React from 'react'
 //import { PolymorphicProps } from '../types/common'
 import PropTypes from 'prop-types'
 //import Icon, { ICON_KEY } from '../../assets/icon'
-//import { cx } from '../../utils'
+import { cx } from '../../utils'
 
 /* import {
   ButtonIconSize,
@@ -42,7 +42,7 @@ export const Button = React.forwardRef(function Button(
   },
   ref
 ) {
-/*   const buttonClassName = cx([
+  const buttonClassName = cx([
     'inline-flex',
     'items-center',
     'justify-center',
@@ -58,8 +58,8 @@ export const Button = React.forwardRef(function Button(
     fullWidth && 'w-full',
     uppercase ? 'uppercase' : '',
     className,
-  ]) */
-  const commonProps = { tabIndex, className, ref }
+  ])
+  const commonProps = { tabIndex, className: buttonClassName, ref }
   const anchorProps = { href }
 
   let additionalProps = {
