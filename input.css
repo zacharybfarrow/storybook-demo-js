@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  src: url('/fonts/airbnb_cereal_bld.woff2');
+  font-family: 'airbnb_cereal_bld';
+  display: swap;
+}
+@font-face {
+  src: url('/fonts/airbnb_cereal_blk.woff2');
+  font-family: 'airbnb_cereal_blk';
+  display: swap;
+}
+@font-face {
+  src: url('/fonts/airbnb_cereal_lgt.woff2');
+  font-family: 'airbnb_cereal_lgt';
+  display: swap;
+}
+@font-face {
+  src: url('/fonts/airbnb_cereal_med.woff2');
+  font-family: 'airbnb_cereal_med';
+  display: swap;
+}
+@font-face {
+  src: url('/fonts/airbnb_cereal_reg.woff2');
+  font-family: 'airbnb_cereal_reg';
+  display: swap;
+}
+
+@layer base {
+  :root {
+    --hsl-neutral-001: 200 05% 01%;
+    --hsl-neutral-100: 200 05% 10%;
+    --hsl-neutral-200: 200 05% 20%;
+    --hsl-neutral-300: 200 05% 30%;
+    --hsl-neutral-400: 200 05% 40%;
+    --hsl-neutral-500: 200 05% 50%;
+    --hsl-neutral-600: 200 05% 60%;
+    --hsl-neutral-700: 200 05% 70%;
+    --hsl-neutral-800: 200 05% 80%;
+    --hsl-neutral-900: 200 05% 90%;
+    --hsl-neutral-999: 200 05% 99%;
+
+    --hsl-tu-blue-001: 200 100% 01%;
+    --hsl-tu-blue-100: 200 100% 10%;
+    --hsl-tu-blue-200: 200 100% 20%;
+    --hsl-tu-blue-300: 200 100% 30%;
+    --hsl-tu-blue-400: 200 100% 40%;
+    --hsl-tu-blue-500: 200 100% 50%;
+    --hsl-tu-blue-600: 200 100% 60%;
+    --hsl-tu-blue-700: 200 100% 70%;
+    --hsl-tu-blue-800: 200 100% 80%;
+    --hsl-tu-blue-900: 200 100% 90%;
+    --hsl-tu-blue-999: 200 100% 99%;
+
+    --hsl-tu-yellow-001: 51 100% 01%;
+    --hsl-tu-yellow-100: 51 100% 10%;
+    --hsl-tu-yellow-200: 51 100% 20%;
+    --hsl-tu-yellow-300: 51 100% 30%;
+    --hsl-tu-yellow-400: 51 100% 40%;
+    --hsl-tu-yellow-500: 51 100% 50%;
+    --hsl-tu-yellow-600: 51 100% 60%;
+    --hsl-tu-yellow-700: 51 100% 70%;
+    --hsl-tu-yellow-800: 51 100% 80%;
+    --hsl-tu-yellow-900: 51 100% 90%;
+    --hsl-tu-yellow-999: 51 100% 99%;
+  }
+}
+
+/* :root {
+  background-color: black;
+  color: white;
+} */

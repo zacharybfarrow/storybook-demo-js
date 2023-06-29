@@ -1,4 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
+import '../input.css';
+
 const preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,6 +10,7 @@ const preview = {
         date: /Date$/,
       },
     },
+    layout: 'centered',
   },
 };
 
