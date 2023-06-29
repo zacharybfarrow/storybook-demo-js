@@ -7,7 +7,15 @@ export default {
     component: Button,
     tags: ['autodocs'],
     argTypes: {
-        
+        variant: {
+            control: {type: 'select'}
+        },
+        kind: {
+            control: {type: 'select'}
+        },
+        size: {
+            control: {type: 'select'}
+        }
     }
 }
 

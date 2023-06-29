@@ -1,7 +1,7 @@
 import React from 'react'
 //import { PolymorphicProps } from '../types/common'
 import PropTypes from 'prop-types'
-//import Icon, { ICON_KEY } from '../../assets/icon'
+import Icon, { ICON_KEY } from '../../assets/icon'
 import { cx } from '../../utils'
 
 import {
@@ -81,7 +81,7 @@ export const Button = React.forwardRef(function Button(
     additionalProps = anchorProps
   }
 
-/*   const ButtonIconElement = !icon ? null : (
+  const ButtonIconElement = !icon ? null : (
     <Icon
       aria-label={iconLabel}
       name={icon}
@@ -90,7 +90,7 @@ export const Button = React.forwardRef(function Button(
         width: ButtonIconSize[size],
       }}
     />
-  ) */
+  )
 
   const Button = React.createElement(
     component,
@@ -105,11 +105,11 @@ export const Button = React.forwardRef(function Button(
       ...additionalProps,
     },
     children,
-   // ButtonIconElement
+    ButtonIconElement
   )
 
   if (isIconOnly && icon) {
-    //return <>{ButtonIconElement}</>
+    return <>{ButtonIconElement}</>
   }
   return Button
 })
@@ -127,7 +127,7 @@ Button.propTypes = {
   /**
    * Specifies the name of the icon that is rendered by the Button element
    */
-  icon: PropTypes.oneOf(['ArrowBottomLeft','ArrowBottomRight','ArrowDown','ArrowLeft','ArrowRight','ArrowTopLeft','ArrowTopRight','ArrowUp','InfoCircled','Avatar']),
+  icon: PropTypes.oneOf(Object.keys(ICON_KEY)),
   /**
    * If icon is rendered by the Button, Specifies the description text provided to screen readers
    */
@@ -139,15 +139,15 @@ Button.propTypes = {
   /**
    * Specifies the kind of Button element that is render
    */
-  kind: PropTypes.oneOf(['SOLID','OUTLINE','GHOST','TINTED']).isRequired,
+  kind: PropTypes.oneOf(Object.keys(ButtonKind)).isRequired,
   /**
    * Specifies the amount of border radius added to the Button element
    */
-  rounded: PropTypes.oneOf(['XSMALL','SMALL','MEDIUM','LARGE','XLARGE','XLARGE','XXLARGE','CIRCLE','SQUARE']),
+  rounded: PropTypes.oneOf(Object.keys(ButtonRadius)),
   /**
    * Specifies the height of the Button element.
    */
-  size: PropTypes.oneOf(['XSMALL','SMALL','MEDIUM','LARGE','XLARGE']),
+  size: PropTypes.oneOf(Object.keys(ButtonSize)),
   /**
    * Specifies the CSS 'text-transform' property of the button element determining the casing of the 'labelText' attribute
    */
@@ -155,7 +155,7 @@ Button.propTypes = {
   /**
    * Specifies the color scheme of Button element that is render
    */
-  variant: PropTypes.oneOf(['PRIMARY','ACTION','ACCENT','DANGER','SUCCESS','WARNING'])
+  variant: PropTypes.oneOf(Object.keys(ButtonVariant))
 }
 
 // re-enable after all props expressed in proptypes?
