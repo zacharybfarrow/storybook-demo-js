@@ -1,5 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
-import '../input.css';
+import React from "react";
+import "../input.css";
 
 const preview = {
   parameters: {
@@ -10,7 +11,7 @@ const preview = {
         date: /Date$/,
       },
     },
-    layout: 'centered',
+    layout: "centered",
   },
 };
 

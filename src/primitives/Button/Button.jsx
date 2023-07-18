@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 //import { PolymorphicProps } from '../types/common'
-import PropTypes from 'prop-types'
-import Icon, { ICON_KEY } from '../../assets/icon'
-import { cx } from '../../utils'
+import Icon, { ICONS } from "../Icon/Icon";
+import PropTypes from "prop-types";
+import { cx } from "../../utils";
 
 import {
   ButtonIconSize,
@@ -11,7 +11,7 @@ import {
   ButtonSize,
   ButtonTheme,
   ButtonVariant,
-} from './config'
+} from "./config";
 
 // eslint-disable-next-line
 
@@ -26,71 +26,73 @@ export const Button = React.forwardRef(function Button(
     iconLabel,
     icon,
     isIconOnly,
-    kind = 'SOLID',
+    kind = "SOLID",
     onBlur,
     onClick,
     onFocus,
     onMouseEnter,
     onMouseLeave,
-    rounded = 'SQUARE',
-    size = 'SMALL',
+    rounded = "SQUARE",
+    size = "SMALL",
     tabIndex,
     type,
     uppercase = false,
-    variant = 'PRIMARY',
+    variant = "PRIMARY",
     ...rest
   },
   ref
 ) {
   const buttonClassName = cx([
-    'inline-flex',
-    'items-center',
-    'justify-center',
-    'outline-2',
-    'border-2',
-    'font-med',
-    'transition-all',
-    'outline-transparent',
-    'focus:outline-blue-500',
+    "inline-flex",
+    "items-center",
+    "justify-center",
+    "outline-2",
+    "border-2",
+    "font-med",
+    "transition-all",
+    "outline-transparent",
+    "focus:outline-blue-500",
     ButtonRadius[rounded],
     ButtonTheme[`${variant}-${kind}`],
     ButtonSize[size],
-    fullWidth && 'w-full',
-    uppercase ? 'uppercase' : '',
+    fullWidth && "w-full",
+    uppercase ? "uppercase" : "",
     className,
-  ])
-  const commonProps = { tabIndex, className: buttonClassName, ref }
-  const anchorProps = { href }
+  ]);
+  const commonProps = { tabIndex, className: buttonClassName, ref };
+  const anchorProps = { href };
 
   let additionalProps = {
     disabled,
     type,
     // add aria props
-  }
+  };
 
-  let component = 'button'
+  let component = "button";
 
   if (as) {
-    component = as
+    component = as;
     additionalProps = {
       ...additionalProps,
       ...anchorProps,
-    }
+    };
   } else if (href && !disabled) {
-    component = 'a'
-    additionalProps = anchorProps
+    component = "a";
+    additionalProps = anchorProps;
   }
 
   const ButtonIconElement = !icon ? null : (
     <Icon
       aria-label={iconLabel}
-      name={icon}
-      style={{
+      iconName={icon}
+      height="2em"
+      width="2em"
+      /*       style={{
         height: ButtonIconSize[size],
         width: ButtonIconSize[size],
-      }}
+      }} */
     />
-  )
+  );
 
   const Button = React.createElement(
     component,
@@ -106,13 +108,13 @@ export const Button = React.forwardRef(function Button(
     },
     children,
     ButtonIconElement
-  )
+  );
 
   if (isIconOnly && icon) {
-    return <>{ButtonIconElement}</>
+    return <>{ButtonIconElement}</>;
   }
-  return Button
-})
+  return Button;
+});
 
 Button.propTypes = {
   disabled: PropTypes.bool,
@@ -127,7 +129,7 @@ Button.propTypes = {
   /**
    * Specifies the name of the icon that is rendered by the Button element
    */
-  icon: PropTypes.oneOf(Object.keys(ICON_KEY)),
+  icon: PropTypes.oneOf(Object.keys(ICONS)),
   /**
    * If icon is rendered by the Button, Specifies the description text provided to screen readers
    */
@@ -155,15 +157,15 @@ Button.propTypes = {
   /**
    * Specifies the color scheme of Button element that is render
    */
-  variant: PropTypes.oneOf(Object.keys(ButtonVariant))
-}
+  variant: PropTypes.oneOf(Object.keys(ButtonVariant)),
+};
 
 // re-enable after all props expressed in proptypes?
 Button.defaultProps = {
   disabled: false,
-  kind: 'SOLID',
-  rounded: 'SQUARE',
-  size: 'SMALL',
+  kind: "SOLID",
+  rounded: "SQUARE",
+  size: "SMALL",
   uppercase: false,
-  variant: 'PRIMARY',
-}
+  variant: "PRIMARY",
+};
