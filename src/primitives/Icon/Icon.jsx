@@ -24,8 +24,6 @@ export default function Icon({
     return null;
   }
 
-  console.log(Object.keys(ICONS));
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +45,13 @@ export default function Icon({
       {desc ? <desc id={descId}>{desc}</desc> : null}
       {title ? <title id={titleId}>{title}</title> : null}
       {ICONS[iconName].paths.map((path, i) => {
-        return <path key={"path" + i} id={"path" + i} d={path} />;
+        return (
+          <path
+            key={iconName + "-path-" + i}
+            id={iconName + "-path-" + i}
+            d={path}
+          />
+        );
       })}
     </svg>
   );
