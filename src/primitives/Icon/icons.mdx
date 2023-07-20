@@ -1,17 +1,10 @@
-import { Meta, IconGallery, IconItem } from "@storybook/blocks";
-import { ICONS } from "./Icon";
-import Icon from "./Icon";
+import { Meta } from "@storybook/blocks";
+import SearchableIcons from "./SearchableIcons";
 
 <Meta title="Atoms/Icons" />
 
 # Icons
 
-<IconGallery>
-  {Object.keys(ICONS).map((icon) => {
-    return (
-      <IconItem key={icon} name={icon}>
-        <Icon iconName={icon} tooltip="true" />
-      </IconItem>
-    );
-  })}
-</IconGallery>
+#### Search below to filter by name or tag.<br/>Pass the name displayed below to the `Icon` component's `iconName` prop to use. For more details see Icon documentation and stories.
+
+<SearchableIcons />

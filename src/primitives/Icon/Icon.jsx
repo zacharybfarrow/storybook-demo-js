@@ -18,6 +18,7 @@ export default function Icon({
   width = "10em",
   backgroundColor,
   borderRadius,
+  tooltip,
   ...props
 }) {
   if (!Object.keys(ICONS).includes(iconName)) {
@@ -32,7 +33,7 @@ export default function Icon({
       width={width}
       height={height}
       viewBox="0 0 1024 1024"
-      className={props.tooltip ? "pointer-events-auto" : "pointer-events-none"}
+      className={tooltip ? "pointer-events-auto" : "pointer-events-none"}
       aria-labelledby={titleId}
       aria-describedby={descId}
       {...props}

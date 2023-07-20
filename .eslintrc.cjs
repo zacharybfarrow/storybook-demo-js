@@ -11,6 +11,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended",
+    "plugin:mdx/recommended",
   ],
   parserOptions: {
     ecmaVersion: "latest",
@@ -20,6 +21,7 @@ module.exports = {
     react: {
       version: "18.2",
     },
+    "mdx/code-blocks": true,
   },
   plugins: ["react-refresh"],
   rules: {
