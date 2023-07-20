@@ -17,7 +17,12 @@ const SearchableIcons = () => {
       (icon) =>
         icon[1].tags.some(
           (tag) => tag.toLowerCase().indexOf(filter.toLowerCase()) > -1
-        ) && (showFragments ? true : !icon[1].tags.includes("t1"))
+        ) &&
+        (showFragments
+          ? true
+          : !icon[1].tags.includes("t1") || // will not need this first line once t1, t2, or t3 have been added to all icons
+            icon[1].tags.includes("t2") ||
+            icon[1].tags.includes("t3"))
     );
     let iconNames = Object.keys(Object.fromEntries(iconOptions));
     setOptions(iconNames);

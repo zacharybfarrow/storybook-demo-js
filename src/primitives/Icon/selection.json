@@ -10,7 +10,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": ["E1X_ico_font", "t1"],
+        "tags": ["E1X_ico_font", "t1", "windows"],
         "colorPermutations": {
           "1191111124124124115110216710018585851": [{}]
         }
@@ -35,7 +35,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": ["E1X_ico_font-01"],
+        "tags": ["E1X_ico_font-01", "help", "question mark"],
         "colorPermutations": {
           "1191111124124124115110216710018585851": [{}]
         }
@@ -60,7 +60,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": ["E1X_ico_font-02"],
+        "tags": ["E1X_ico_font-02", "user", "person", "profile"],
         "colorPermutations": {
           "1191111124124124115110216710018585851": [{}]
         }
@@ -83,7 +83,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": ["E1X_ico_font-03"],
+        "tags": ["E1X_ico_font-03", "down", "arrow"],
         "colorPermutations": {
           "1191111124124124115110216710018585851": [{}]
         }
@@ -106,7 +106,7 @@
         "isMulticolor": false,
         "isMulticolor2": false,
         "grid": 0,
-        "tags": ["E1X_ico_font-04"],
+        "tags": ["E1X_ico_font-04", "up", "arrow"],
         "colorPermutations": {
           "1191111124124124115110216710018585851": [{}]
         }
