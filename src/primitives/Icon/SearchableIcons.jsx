@@ -92,7 +92,7 @@ const SearchableIcons = () => {
             >
               <Icon
                 key={`${icon}preview`}
-                iconName={icon}
+                name={icon}
                 title={icon}
                 tooltip
                 height="5em"

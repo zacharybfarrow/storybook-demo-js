@@ -32,7 +32,7 @@ describe.each(iconNames)(
   "Icon component renders proper path elements for %s",
   function (iconName) {
     it("renders a path element for all paths in the source json", async () => {
-      render(<Icon iconName={iconName} />);
+      render(<Icon name={iconName} />);
 
       const numOfPaths = ICONS[iconName].paths.length;
       const icon = await screen.getByRole("img");
@@ -47,7 +47,7 @@ describe.each(iconNames)(
     });
 
     it("correctly sets the d attribute for each path", async () => {
-      render(<Icon iconName={iconName} />);
+      render(<Icon name={iconName} />);
 
       const jsonPaths = ICONS[iconName].paths;
       const icon = await screen.getByRole("img");
@@ -64,22 +64,22 @@ describe.each(iconNames)(
 );
 
 describe("Icon component renders proper html elements", function () {
-  it("renders an svg element if a valid iconName is provided", async () => {
-    render(<Icon iconName="E1X_ico_font" />);
+  it("renders an svg element if a valid name is provided", async () => {
+    render(<Icon name="E1X_ico_font" />);
 
     const icon = await screen.getByRole("img");
 
     expect(icon.tagName).toBe("svg");
   });
 
-  it("returns null if iconName is not valid", async () => {
-    const { container } = render(<Icon iconName="doesnt-exist" />);
-
-    expect(container.innerHTML).toBe("");
+  it("throws an error if name is not valid", async () => {
+    expect(() => {
+      render(<Icon name="doesnt-exist" />);
+    }).toThrow();
   });
 
   it("renders a title element when a title is provided", async () => {
-    render(<Icon iconName="E1X_ico_font" title="test title" />);
+    render(<Icon name="E1X_ico_font" title="test title" />);
 
     const titleElement = await screen.getByTitle("test title");
 
@@ -87,7 +87,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders no title element when a title is not provided", async () => {
-    render(<Icon iconName="E1X_ico_font" />);
+    render(<Icon name="E1X_ico_font" />);
 
     const icon = await screen.getByRole("img");
     const titleElements = icon.getElementsByTagName("title");
@@ -96,7 +96,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders a desc element when a desc is provided", async () => {
-    render(<Icon iconName="E1X_ico_font" desc="my desc" />);
+    render(<Icon name="E1X_ico_font" desc="my desc" />);
 
     const icon = await screen.getByRole("img");
     const descElement = icon.getElementsByTagName("desc")[0];
@@ -105,7 +105,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders no desc element when a desc is not provided", async () => {
-    render(<Icon iconName="E1X_ico_font" />);
+    render(<Icon name="E1X_ico_font" />);
 
     const icon = await screen.getByRole("img");
     const descElements = icon.getElementsByTagName("desc");

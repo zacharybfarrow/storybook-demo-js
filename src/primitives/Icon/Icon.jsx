@@ -9,7 +9,7 @@ iconJson.icons.forEach((icon) => {
 });
 
 export default function Icon({
-  iconName,
+  name,
   title,
   titleId,
   desc,
@@ -19,19 +19,20 @@ export default function Icon({
   backgroundColor,
   borderRadius,
   tooltip,
+  id,
   ...props
 }) {
-  if (!Object.keys(ICONS).includes(iconName)) {
-    return null;
+  if (!Object.keys(ICONS).includes(name)) {
+    throw new Error("Must provide valid icon name!");
   }
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      id={iconName}
-      width={width}
-      height={height}
+      id={id}
+      width={width} // we need fixed options for this
+      height={height} // need fixed options for this
       viewBox="0 0 1024 1024"
       className={tooltip ? "pointer-events-auto" : "pointer-events-none"}
       aria-labelledby={titleId}
@@ -45,13 +46,9 @@ export default function Icon({
     >
       {desc ? <desc id={descId}>{desc}</desc> : null}
       {title ? <title id={titleId}>{title}</title> : null}
-      {ICONS[iconName].paths.map((path, i) => {
+      {ICONS[name].paths.map((path, i) => {
         return (
-          <path
-            key={iconName + "-path-" + i}
-            id={iconName + "-path-" + i}
-            d={path}
-          />
+          <path key={name + "-path-" + i} id={name + "-path-" + i} d={path} />
         );
       })}
     </svg>
@@ -62,7 +59,7 @@ Icon.propTypes = {
   /**
    * Specifies the icon that will be rendered, based on the pre-populated names in selection.json
    */
-  iconName: PropTypes.oneOf(Object.keys(ICONS)),
+  name: PropTypes.oneOf(Object.keys(ICONS)),
   /**
    * Specifies the color of the icon.
    */
@@ -83,6 +80,10 @@ Icon.propTypes = {
    * Specifies the width of the icon.
    */
   width: PropTypes.string,
+  /**
+   * The unique html id you'd like to provide for the Icon
+   */
+  id: PropTypes.string,
   /**
    * Specifies the title of the icon. This property is used to provide a textual label or name for the icon.
    * It is applied to the <title> element inside the SVG, which serves as an accessible name for the icon when using assistive technologies like screen readers.
