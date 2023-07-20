@@ -84,7 +84,7 @@ export const Button = React.forwardRef(function Button(
   const ButtonIconElement = !icon ? null : (
     <Icon
       aria-label={iconLabel}
-      iconName={icon}
+      name={icon}
       height="2em"
       width="2em"
       /*       style={{
