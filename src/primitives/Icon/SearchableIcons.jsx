@@ -36,7 +36,7 @@ const SearchableIcons = () => {
           id="searchIcons"
           style={{
             border: "solid black 2px",
-            padding: "6px",
+            padding: "6px 6px 6px 12px",
             margin: "0px 4px 10px 10px",
             borderRadius: "12px",
           }}
