@@ -26,6 +26,18 @@ export default function Icon({
     throw new Error("Must provide valid icon name!");
   }
 
+  if (title && !titleId) {
+    console.warn(
+      "WARNING: you have provided a title without a titleId. The aria-labelledby attribute is uncoupled from the title element and screenreading technology may be unable to name this icon."
+    );
+  }
+
+  if (desc && !descId) {
+    console.warn(
+      "WARNING: you have provided a desc without a descId. The aria-describedby attribute is uncoupled from the desc element and screenreading technology may be unable to describe this icon."
+    );
+  }
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
