@@ -1,6 +1,6 @@
 import React from "react";
-import { render, screen, toHaveStyle } from "@testing-library/react";
-import Icon, { ICONS } from "./Icon";
+import { render, screen } from "@testing-library/react";
+import Icon, { ICONS, IconSizes } from "./Icon";
 
 const iconNames = Object.keys(ICONS);
 
@@ -150,8 +150,25 @@ describe("Icon applies attributes and properties correctly", function () {
 
     expect(icon.getAttribute("id")).toBe("myId");
   });
-  it("should override the default width if width is provided", async () => {
-    render(<Icon name="E1X_ico_font" width="1000px" data-testid="forTest" />);
+  it("should set height if size is provided", async () => {
+    const testSize = "XL";
+    render(<Icon name="E1X_ico_font" size={testSize} />);
+
+    const icon = await screen.getByRole("img");
+
+    expect(icon.getAttribute("height")).toBe(IconSizes[testSize]);
+  });
+  it("should set width if size is provided", async () => {
+    const testSize = "XL";
+    render(<Icon name="E1X_ico_font" size={testSize} />);
+
+    const icon = await screen.getByRole("img");
+
+    expect(icon.getAttribute("width")).toBe(IconSizes[testSize]);
+  });
+  it("should override the default width if size is provided", async () => {
+    const testSize = "XL";
+    render(<Icon name="E1X_ico_font" size={testSize} data-testid="forTest" />);
     render(<Icon name="E1X_ico_font" data-testid="default" />);
 
     const icon = await screen.getByTestId("forTest");
@@ -161,8 +178,9 @@ describe("Icon applies attributes and properties correctly", function () {
       defaultIcon.getAttribute("width")
     );
   });
-  it("should override the default height if height is provided", async () => {
-    render(<Icon name="E1X_ico_font" height="1000px" data-testid="forTest" />);
+  it("should override the default height if size is provided", async () => {
+    const testSize = "XL";
+    render(<Icon name="E1X_ico_font" size={testSize} data-testid="forTest" />);
     render(<Icon name="E1X_ico_font" data-testid="default" />);
 
     const icon = await screen.getByTestId("forTest");

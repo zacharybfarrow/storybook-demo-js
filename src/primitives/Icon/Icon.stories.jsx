@@ -1,4 +1,4 @@
-import Icon from "./Icon";
+import Icon, { IconSizes } from "./Icon";
 import { ICONS } from "./Icon";
 
 // Metadata
@@ -15,6 +15,9 @@ export default {
     },
     backgroundColor: {
       control: "color",
+    },
+    size: {
+      options: Object.keys(IconSizes),
     },
   },
 };

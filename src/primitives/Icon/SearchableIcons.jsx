@@ -94,9 +94,8 @@ const SearchableIcons = () => {
                 key={`${icon}preview`}
                 name={icon}
                 title={icon}
+                titleId={`${icon}-titleId`}
                 tooltip
-                height="5em"
-                width="5em"
               />
               <p
                 style={{

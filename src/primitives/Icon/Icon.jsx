@@ -2,10 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import iconJson from "./selection.json";
 
+// capture Icon names and Data from selection.json
 export let ICONS = [];
 
 iconJson.icons.forEach((icon) => {
   ICONS[icon.properties.name] = icon.icon;
+});
+
+export const IconSizes = Object.freeze({
+  XS: "1.5em",
+  SMALL: "3em",
+  MEDIUM: "5em",
+  LARGE: "7em",
+  XL: "10em",
 });
 
 export default function Icon({
@@ -14,8 +23,7 @@ export default function Icon({
   titleId,
   desc,
   descId,
-  height = "10em",
-  width = "10em",
+  size = "MEDIUM",
   backgroundColor,
   borderRadius,
   tooltip,
@@ -43,8 +51,8 @@ export default function Icon({
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       id={id}
-      width={width} // we need fixed options for this
-      height={height} // need fixed options for this
+      width={IconSizes[size.toUpperCase()]} // we need 'real' fixed options for this
+      height={IconSizes[size.toUpperCase()]} // need 'real' fixed options for this
       viewBox="0 0 1024 1024"
       className={tooltip ? "pointer-events-auto" : "pointer-events-none"}
       aria-labelledby={titleId}
@@ -85,13 +93,9 @@ Icon.propTypes = {
    */
   borderRadius: PropTypes.string,
   /**
-   * Specifies the height of the icon.
+   * Specifies the height and width of the icon.
    */
-  height: PropTypes.string,
-  /**
-   * Specifies the width of the icon.
-   */
-  width: PropTypes.string,
+  size: PropTypes.oneOf(Object.keys(IconSizes)),
   /**
    * The unique html id you'd like to provide for the Icon
    */
@@ -123,7 +127,5 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  height: "10em",
-  width: "10em",
   tooltip: false,
 };
