@@ -11,6 +11,17 @@ const SearchableIcons = () => {
     setFilter(e.target.value);
   }
 
+  /**
+   * Sorting logic:
+   * The tags in selection.json include the Icon's file name as well as descriptive tags and a type tag (t1, t2, or t3)
+   * Here we are coercing everything to lowercase and searching to see if our search query is contained within the individual words found in the tags.
+   * So a search query of 'us', will return icons with tags 'USA', 'user', 'blush', 'fuse', etc
+   *
+   * Icon Types:
+   * t1 = icon fragments - not meant to be used alone, but are used in combination to create more complex icons (hidden by default)
+   * t2 = core icons - single color icons ready for consumption
+   * t3 = advanced stacked icons - advanced icons made up of fragments and/or core icons that have set colors or color palette options
+   */
   useEffect(() => {
     let iconsAsArray = Object.entries(ICONS);
     let iconOptions = iconsAsArray.filter(
@@ -19,7 +30,7 @@ const SearchableIcons = () => {
           (tag) => tag.toLowerCase().indexOf(filter.toLowerCase()) > -1
         ) &&
         (showFragments
-          ? true
+          ? true // once all icons are tagged, we can just say 'true' here if they want to show fragments
           : !icon[1].tags.includes("t1") || // will not need this first line once t1, t2, or t3 have been added to all icons
             icon[1].tags.includes("t2") ||
             icon[1].tags.includes("t3"))

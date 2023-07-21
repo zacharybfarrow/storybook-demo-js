@@ -9,6 +9,7 @@ iconJson.icons.forEach((icon) => {
   ICONS[icon.properties.name] = icon.icon;
 });
 
+// These need to be updated with values from the Design team
 export const IconSizes = Object.freeze({
   XS: "1.5em",
   SMALL: "3em",
@@ -17,6 +18,10 @@ export const IconSizes = Object.freeze({
   XL: "10em",
 });
 
+/**
+ * Icon:
+ * Generates svg based on path data found in selection.json (provided by TU Design Team)
+ */
 export default function Icon({
   name,
   title,
@@ -30,16 +35,17 @@ export default function Icon({
   id,
   ...props
 }) {
+  // name prop validation references names from selection.json that are stored as keys in ICONS
   if (!Object.keys(ICONS).includes(name)) {
     throw new Error("Must provide valid icon name!");
   }
 
+  // Accessibility warnings for title and desc
   if (title && !titleId) {
     console.warn(
       "WARNING: you have provided a title without a titleId. The aria-labelledby attribute is uncoupled from the title element and screenreading technology may be unable to name this icon."
     );
   }
-
   if (desc && !descId) {
     console.warn(
       "WARNING: you have provided a desc without a descId. The aria-describedby attribute is uncoupled from the desc element and screenreading technology may be unable to describe this icon."
@@ -51,8 +57,8 @@ export default function Icon({
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       id={id}
-      width={IconSizes[size.toUpperCase()]} // we need 'real' fixed options for this
-      height={IconSizes[size.toUpperCase()]} // need 'real' fixed options for this
+      width={IconSizes[size.toUpperCase()]}
+      height={IconSizes[size.toUpperCase()]}
       viewBox="0 0 1024 1024"
       className={tooltip ? "pointer-events-auto" : "pointer-events-none"}
       aria-labelledby={titleId}
@@ -64,8 +70,14 @@ export default function Icon({
           : {}
       }
     >
+      {/**
+       * title and desc elements are only generated if associate props are passed to the Icon
+       */}
       {desc ? <desc id={descId}>{desc}</desc> : null}
       {title ? <title id={titleId}>{title}</title> : null}
+      {/**
+       * Generate path elements for each path provided in selection.json (some Icons have several)
+       */}
       {ICONS[name].paths.map((path, i) => {
         return (
           <path key={name + "-path-" + i} id={name + "-path-" + i} d={path} />
