@@ -45,3 +45,52 @@ export const BackgroundColor = {
     fill: "white",
   },
 };
+
+export const InText = {
+  args: {
+    name: "Tru_icon-19",
+    size: "XS",
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          borderColor: "black",
+          borderWidth: "5px",
+          borderStyle: "double",
+          boxShadow: "5px 5px 5px lightgrey",
+          margin: "2em",
+          borderRadius: "7px",
+        }}
+      >
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            paddingLeft: "5em",
+            paddingRight: "5em",
+            paddingTop: "2em",
+          }}
+        >
+          This is an example of an Icon &nbsp;
+          <Story />
+          &nbsp; placed inside of a text element.
+        </span>
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            paddingLeft: "5em",
+            paddingRight: "5em",
+            paddingBottom: "2em",
+          }}
+        >
+          Simply place the Icon component inside of a block of text (span,
+          paragraph, header, etc) and adjust the size prop to your liking. Note
+          that, depending on your the structure of your page, you may need to
+          apply display: flex and flex-direction: row to the parent element.
+        </span>
+      </div>
+    ),
+  ],
+};
