@@ -9,13 +9,12 @@ iconJson.icons.forEach((icon) => {
   ICONS[icon.properties.name] = icon.icon;
 });
 
-// These need to be updated with values from the Design team
 export const IconSizes = Object.freeze({
-  XS: "1.5em",
-  SMALL: "3em",
-  MEDIUM: "5em",
-  LARGE: "7em",
-  XL: "10em",
+  XS: "2rem",
+  SMALL: "3rem",
+  MEDIUM: "4rem",
+  LARGE: "5rem",
+  XL: "6rem",
 });
 
 /**

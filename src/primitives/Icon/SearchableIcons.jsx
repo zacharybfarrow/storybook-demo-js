@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ICONS } from "./Icon";
 import Icon from "./Icon";
 
@@ -45,6 +45,7 @@ const SearchableIcons = () => {
         <input
           label="Search..."
           id="searchIcons"
+          role="search"
           style={{
             border: "solid black 2px",
             padding: "6px 6px 6px 12px",
@@ -70,9 +71,10 @@ const SearchableIcons = () => {
           <input
             id="fragCheck"
             name="fragCheck"
+            role="checkbox"
             type="checkbox"
             value={showFragments}
-            onChange={() => {
+            onClick={() => {
               showFragments ? setShowFragments(false) : setShowFragments(true);
             }}
           />

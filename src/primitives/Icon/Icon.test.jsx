@@ -1,10 +1,10 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import Icon, { ICONS, IconSizes } from "./Icon";
 
 const iconNames = Object.keys(ICONS);
 
-describe.each(iconNames)("%s: Sanity Check", function (iconName) {
+describe.each(iconNames)("%s: Icon Sanity Check", function (iconName) {
   test("selection.json provides at least one path for icon", () => {
     expect(ICONS[iconName].paths.length).not.toBe(0);
   });
@@ -49,6 +49,7 @@ describe.each(iconNames)("%s: Sanity Check", function (iconName) {
 
     expect(iconPaths.sort()).toStrictEqual(jsonPaths.sort());
   });
+  afterEach(cleanup);
 });
 
 describe("Icon component renders proper html elements", function () {
@@ -100,6 +101,7 @@ describe("Icon component renders proper html elements", function () {
 
     expect(descElements.length).toBe(0);
   });
+  afterEach(cleanup);
 });
 
 describe("Icon applies attributes and properties correctly", function () {
@@ -259,4 +261,5 @@ describe("Icon applies attributes and properties correctly", function () {
 
     expect(icon.getAttribute("aria-describedby")).toBe("descId");
   });
+  afterEach(cleanup);
 });

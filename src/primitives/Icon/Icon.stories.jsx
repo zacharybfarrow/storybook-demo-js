@@ -41,7 +41,7 @@ export const BackgroundColor = {
   args: {
     name: "E1X_ico_font-188",
     backgroundColor: "#16a34a",
-    borderRadius: "30px",
+    borderRadius: "15px",
     fill: "white",
   },
 };
