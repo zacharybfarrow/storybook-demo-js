@@ -2,7 +2,6 @@ import React from "react";
 import { fireEvent, render, screen, cleanup } from "@testing-library/react";
 import * as IconImpl from "./Icon";
 import SearchableIcons from "./SearchableIcons";
-import { getAllByLabelText } from "@storybook/testing-library";
 
 describe("Searchable Icons Functionality", function () {
   // mock data with same format as ICONS
