@@ -33,7 +33,7 @@ export const Default = {
 export const Accessibility = {
   args: {
     name: "E1X_ico_font-19",
-    title: "Email",
+    title: "The title prop controls the content of the tooltip",
     titleId: "iconTitle",
     desc: "text describing the email icon",
     descId: "iconDesc",
