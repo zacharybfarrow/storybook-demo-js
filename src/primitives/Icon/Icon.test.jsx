@@ -212,15 +212,17 @@ describe("Icon applies attributes and properties correctly", function () {
     render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
+    const styles = window.getComputedStyle(icon);
 
-    expect(icon.getAttribute("class")).toContain("icon-no-tooltip");
+    expect(styles.getPropertyValue("pointer-events")).toBe("none");
   });
   it("should set pointer events to auto (and thus the html5 auto-tooltip) if the tooltip prop is provided", async () => {
     render(<Icon name="Tru_icon-139" tooltip />);
 
     const icon = await screen.getByRole("img");
+    const styles = window.getComputedStyle(icon);
 
-    expect(icon.getAttribute("class")).toContain("icon-tooltip");
+    expect(styles.getPropertyValue("pointer-events")).toBe("auto");
   });
   it("should warn the developer if the title prop is provided but the titleId is not", async () => {
     const logSpy = jest.spyOn(global.console, "warn");

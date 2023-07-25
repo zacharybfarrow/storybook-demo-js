@@ -62,6 +62,12 @@ export default function Icon({
 
   // Get custom width if present
   const customWidth = ICONS[name].width ? ICONS[name].width : null;
+  // set backgroundColor, borderRadius, and tooltip styles
+  const styles = {
+    backgroundColor: backgroundColor ? backgroundColor : "",
+    borderRadius: backgroundColor && borderRadius ? borderRadius : "",
+    pointerEvents: tooltip ? "auto" : "none",
+  };
 
   return (
     <svg
@@ -71,15 +77,10 @@ export default function Icon({
       width={IconSizes[size.toUpperCase()]}
       height={IconSizes[size.toUpperCase()]}
       viewBox={customWidth ? `0 0 ${customWidth} 1024` : "0 0 1024 1024"}
-      className={tooltip ? "icon-tooltip" : "icon-no-tooltip"}
       aria-labelledby={titleId}
       aria-describedby={descId}
       {...props}
-      style={
-        backgroundColor
-          ? { backgroundColor: backgroundColor, borderRadius: borderRadius }
-          : {}
-      }
+      style={styles}
     >
       {/**
        * title and desc elements are only generated if associate props are passed to the Icon

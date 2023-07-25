@@ -25,31 +25,61 @@ export default {
 export const Default = {
   args: {
     name: "E1X_ico_font-19",
+    title: "accessibility title",
+    titleId: "accessibleTitle",
   },
 };
 
-export const WithTooltip = {
+export const Accessibility = {
   args: {
     name: "E1X_ico_font-19",
     title: "Email",
     titleId: "iconTitle",
+    desc: "text describing the email icon",
+    descId: "iconDesc",
     tooltip: true,
   },
 };
 
-export const BackgroundColor = {
-  args: {
-    name: "E1X_ico_font-188",
-    backgroundColor: "#16a34a",
-    borderRadius: "15px",
-    fill: "white",
+export const Color = {
+  render: () => {
+    return (
+      <div
+        style={{
+          width: "500px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Icon
+          name="E1X_ico_font-43"
+          backgroundColor="#16a34a"
+          borderRadius="15px"
+          fill="white"
+          title="Color is set using the fill and/or backgroundColor props"
+          titleId="iconTooltip"
+          tooltip
+        />
+        <Icon
+          name="E1X_ico_font-50"
+          fill="red"
+          title="Background color is transparent by default"
+          titleId="icon2Tooltip"
+          tooltip
+        />
+      </div>
+    );
   },
 };
 
 export const InText = {
   args: {
-    name: "Tru_icon-19",
+    name: "E1X_ico_font-01",
     size: "XS",
+    title: "Help me!",
+    titleId: "ariaLabel",
+    tooltip: true,
   },
   decorators: [
     (Story) => (
@@ -85,10 +115,13 @@ export const InText = {
             paddingBottom: "2em",
           }}
         >
-          Simply place the Icon component inside of a block of text (span,
-          paragraph, header, etc) and adjust the size prop to your liking. Note
-          that, depending on your the structure of your page, you may need to
-          apply display: flex and flex-direction: row to the parent element.
+          <br /> Simply place the Icon component inside of a block of text
+          (span, paragraph, header, etc) and adjust the size prop to your
+          liking. Note that, depending on your the structure of your page, you
+          may need to apply display: flex and flex-direction: row to the parent
+          element.
+          <br /> In this example, there is a non-breaking space on either side
+          of the icon.
         </span>
       </div>
     ),
