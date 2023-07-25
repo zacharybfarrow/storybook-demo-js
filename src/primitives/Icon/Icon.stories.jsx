@@ -8,7 +8,7 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     name: {
-      options: Object.keys(ICONS),
+      options: Object.keys(ICONS).sort(),
     },
     fill: {
       control: "color",

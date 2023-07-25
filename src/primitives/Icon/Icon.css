@@ -1,0 +1,7 @@
+.icon-tooltip {
+    pointer-events: "auto";
+}
+
+.icon-no-tooltip {
+    pointer-events: "none";
+}

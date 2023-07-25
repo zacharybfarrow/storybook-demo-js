@@ -6,7 +6,7 @@ import SearchableIcons from "./SearchableIcons";
 describe("Searchable Icons Functionality", function () {
   // mock data with same format as ICONS
   IconImpl.ICONS = {
-    E1X_ico_font: {
+    "masked_icons_fonts-169": {
       paths: ["M0 0h1024v1024H0V0z"],
       tags: ["icon1", "t1", "a", "gh"],
     },
@@ -45,7 +45,7 @@ describe("Searchable Icons Functionality", function () {
 
     const fragCheck = await screen.getByRole("checkbox");
     fireEvent.click(fragCheck);
-    const iconFrags = await screen.getAllByLabelText("E1X_ico_font");
+    const iconFrags = await screen.getAllByLabelText("masked_icons_fonts-169");
     const iconOptions = await screen.getAllByRole("img");
 
     expect(iconFrags.length).toBe(1);
@@ -59,13 +59,17 @@ describe("Searchable Icons Functionality", function () {
     fireEvent.click(fragCheck); // click twice to hide them again
     const iconOptions = await screen.getAllByRole("img");
 
-    expect(screen.queryAllByLabelText("E1X_ico_font")).toStrictEqual([]);
+    expect(screen.queryAllByLabelText("masked_icons_fonts-169")).toStrictEqual(
+      []
+    );
     expect(iconOptions.length).toBe(7);
   });
   test("Default view should not show icon fragments", async () => {
     render(<SearchableIcons />);
 
-    expect(screen.queryAllByLabelText("E1X_ico_font")).toStrictEqual([]);
+    expect(screen.queryAllByLabelText("masked_icons_fonts-169")).toStrictEqual(
+      []
+    );
   });
   test("Default view should show all icons that are not fragments", async () => {
     render(<SearchableIcons />);
@@ -110,7 +114,7 @@ describe("Searchable Icons Functionality", function () {
     const searchInput = await screen.getByRole("search");
     fireEvent.click(fragCheck);
     fireEvent.change(searchInput, { target: { value: "gh" } });
-    const iconFrags = await screen.getAllByLabelText("E1X_ico_font");
+    const iconFrags = await screen.getAllByLabelText("masked_icons_fonts-169");
     const iconOptions = await screen.getAllByRole("img");
 
     expect(iconFrags.length).toBe(1);
@@ -121,7 +125,9 @@ describe("Searchable Icons Functionality", function () {
 
     const searchInput = await screen.getByRole("search");
     fireEvent.change(searchInput, { target: { value: "gh" } });
-    const iconFrags = await screen.queryAllByLabelText("E1X_ico_font");
+    const iconFrags = await screen.queryAllByLabelText(
+      "masked_icons_fonts-169"
+    );
     const iconOptions = await screen.getAllByRole("img");
 
     expect(iconFrags).toStrictEqual([]);

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import Icon, { ICONS, IconSizes } from "./Icon";
+import Icon, { ICONS, IconSizes, CustomViewBoxes } from "./Icon";
 
 const iconNames = Object.keys(ICONS);
 
@@ -54,7 +54,7 @@ describe.each(iconNames)("%s: Icon Sanity Check", function (iconName) {
 
 describe("Icon component renders proper html elements", function () {
   it("renders an svg element if a valid name is provided", async () => {
-    render(<Icon name="E1X_ico_font" />);
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
 
@@ -68,7 +68,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders a title element when a title is provided", async () => {
-    render(<Icon name="E1X_ico_font" title="test title" />);
+    render(<Icon name="Tru_icon-139" title="test title" />);
 
     const titleElement = await screen.getByTitle("test title");
 
@@ -76,7 +76,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders no title element when a title is not provided", async () => {
-    render(<Icon name="E1X_ico_font" />);
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
     const titleElements = icon.getElementsByTagName("title");
@@ -85,7 +85,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders a desc element when a desc is provided", async () => {
-    render(<Icon name="E1X_ico_font" desc="my desc" />);
+    render(<Icon name="Tru_icon-139" desc="my desc" />);
 
     const icon = await screen.getByRole("img");
     const descElement = icon.getElementsByTagName("desc")[0];
@@ -94,7 +94,7 @@ describe("Icon component renders proper html elements", function () {
   });
 
   it("renders no desc element when a desc is not provided", async () => {
-    render(<Icon name="E1X_ico_font" />);
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
     const descElements = icon.getElementsByTagName("desc");
@@ -106,14 +106,14 @@ describe("Icon component renders proper html elements", function () {
 
 describe("Icon applies attributes and properties correctly", function () {
   it("should set role as img", async () => {
-    render(<Icon name="E1X_ico_font" data-testid="test" />);
+    render(<Icon name="Tru_icon-139" data-testid="test" />);
 
     const icon = await screen.getByTestId("test");
 
     expect(icon.getAttribute("role")).toBe("img");
   });
   it("should set the backgroundColor if provided", async () => {
-    render(<Icon name="E1X_ico_font" backgroundColor="black" />);
+    render(<Icon name="Tru_icon-139" backgroundColor="black" />);
 
     const icon = await screen.getByRole("img");
     const style = window.getComputedStyle(icon);
@@ -122,7 +122,7 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should set the borderRadius if backgroundColor and borderRadius are provided", async () => {
     render(
-      <Icon name="E1X_ico_font" backgroundColor="black" borderRadius="10px" />
+      <Icon name="Tru_icon-139" backgroundColor="black" borderRadius="10px" />
     );
 
     const icon = await screen.getByRole("img");
@@ -131,7 +131,7 @@ describe("Icon applies attributes and properties correctly", function () {
     expect(style.borderRadius).toBe("10px");
   });
   it("should not set the borderRadius if backgroundColor is not probided", async () => {
-    render(<Icon name="E1X_ico_font" borderRadius="10px" />);
+    render(<Icon name="Tru_icon-139" borderRadius="10px" />);
 
     const icon = await screen.getByRole("img");
     const style = window.getComputedStyle(icon);
@@ -139,14 +139,14 @@ describe("Icon applies attributes and properties correctly", function () {
     expect(style.borderRadius).toBe("");
   });
   it("should set the xml namespace (xmlns) properly", async () => {
-    render(<Icon name="E1X_ico_font" />);
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
 
     expect(icon.getAttribute("xmlns")).toBe("http://www.w3.org/2000/svg");
   });
   it("should set the html id if provided", async () => {
-    render(<Icon name="E1X_ico_font" id="myId" />);
+    render(<Icon name="Tru_icon-139" id="myId" />);
 
     const icon = await screen.getByRole("img");
 
@@ -154,7 +154,7 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should set height if size is provided", async () => {
     const testSize = "XL";
-    render(<Icon name="E1X_ico_font" size={testSize} />);
+    render(<Icon name="Tru_icon-139" size={testSize} />);
 
     const icon = await screen.getByRole("img");
 
@@ -162,7 +162,7 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should set width if size is provided", async () => {
     const testSize = "XL";
-    render(<Icon name="E1X_ico_font" size={testSize} />);
+    render(<Icon name="Tru_icon-139" size={testSize} />);
 
     const icon = await screen.getByRole("img");
 
@@ -170,8 +170,8 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should override the default width if size is provided", async () => {
     const testSize = "XL";
-    render(<Icon name="E1X_ico_font" size={testSize} data-testid="forTest" />);
-    render(<Icon name="E1X_ico_font" data-testid="default" />);
+    render(<Icon name="Tru_icon-139" size={testSize} data-testid="forTest" />);
+    render(<Icon name="Tru_icon-139" data-testid="default" />);
 
     const icon = await screen.getByTestId("forTest");
     const defaultIcon = await screen.getByTestId("default");
@@ -182,8 +182,8 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should override the default height if size is provided", async () => {
     const testSize = "XL";
-    render(<Icon name="E1X_ico_font" size={testSize} data-testid="forTest" />);
-    render(<Icon name="E1X_ico_font" data-testid="default" />);
+    render(<Icon name="Tru_icon-139" size={testSize} data-testid="forTest" />);
+    render(<Icon name="Tru_icon-139" data-testid="default" />);
 
     const icon = await screen.getByTestId("forTest");
     const defaultIcon = await screen.getByTestId("default");
@@ -192,32 +192,39 @@ describe("Icon applies attributes and properties correctly", function () {
       defaultIcon.getAttribute("height")
     );
   });
-  it("should set the viewBox to '0 0 1024 1024'", async () => {
-    render(<Icon name="E1X_ico_font" />);
+  it("should set the viewBox to '0 0 1024 1024' for icons without a width property in selection.json", async () => {
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
 
     expect(icon.getAttribute("viewBox")).toBe("0 0 1024 1024");
   });
-  // will need to rework if we don't use Tailwind
-  it("should disable pointer events (and thus the html5 auto-tooltip) if the tooltip prop is not provided", async () => {
-    render(<Icon name="E1X_ico_font" />);
+  it("should set a custom viewBox width if selection.json provides a width", async () => {
+    render(<Icon name="E1X_ico_font-107" />);
 
     const icon = await screen.getByRole("img");
 
-    expect(icon.getAttribute("class")).toContain("pointer-events-none");
+    expect(icon.getAttribute("viewBox")).toBe(
+      `0 0 ${ICONS["E1X_ico_font-107"].width} 1024`
+    );
   });
-  // will need to rework if we don't use Tailwind
-  it("should set pointer events to auto (and thus the html5 auto-tooltip) if the tooltip prop is provided", async () => {
-    render(<Icon name="E1X_ico_font" tooltip />);
+  it("should disable pointer events (and thus the html5 auto-tooltip) if the tooltip prop is not provided", async () => {
+    render(<Icon name="Tru_icon-139" />);
 
     const icon = await screen.getByRole("img");
 
-    expect(icon.getAttribute("class")).toContain("pointer-events-auto");
+    expect(icon.getAttribute("class")).toContain("icon-no-tooltip");
+  });
+  it("should set pointer events to auto (and thus the html5 auto-tooltip) if the tooltip prop is provided", async () => {
+    render(<Icon name="Tru_icon-139" tooltip />);
+
+    const icon = await screen.getByRole("img");
+
+    expect(icon.getAttribute("class")).toContain("icon-tooltip");
   });
   it("should warn the developer if the title prop is provided but the titleId is not", async () => {
     const logSpy = jest.spyOn(global.console, "warn");
-    render(<Icon name="E1X_ico_font" title="myTitle" />);
+    render(<Icon name="Tru_icon-139" title="myTitle" />);
 
     expect(logSpy).toHaveBeenCalled();
 
@@ -225,14 +232,14 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should not log a warning if both title and titleId are provided", async () => {
     const logSpy = jest.spyOn(global.console, "warn");
-    render(<Icon name="E1X_ico_font" title="myTitle" titleId="titleId" />);
+    render(<Icon name="Tru_icon-139" title="myTitle" titleId="titleId" />);
 
     expect(logSpy).not.toHaveBeenCalled();
 
     logSpy.mockRestore();
   });
   it("should set the aria-labelledby property with the titleId if provided", async () => {
-    render(<Icon name="E1X_ico_font" title="myTitle" titleId="titleId" />);
+    render(<Icon name="Tru_icon-139" title="myTitle" titleId="titleId" />);
 
     const icon = await screen.getByRole("img");
 
@@ -240,7 +247,7 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should warn the developer if the desc prop is provided but the descId is not", async () => {
     const logSpy = jest.spyOn(global.console, "warn");
-    render(<Icon name="E1X_ico_font" desc="description" />);
+    render(<Icon name="Tru_icon-139" desc="description" />);
 
     expect(logSpy).toHaveBeenCalled();
 
@@ -248,14 +255,14 @@ describe("Icon applies attributes and properties correctly", function () {
   });
   it("should not log a warning if both desc and descId are provided", async () => {
     const logSpy = jest.spyOn(global.console, "warn");
-    render(<Icon name="E1X_ico_font" desc="description" descId="descId" />);
+    render(<Icon name="Tru_icon-139" desc="description" descId="descId" />);
 
     expect(logSpy).not.toHaveBeenCalled();
 
     logSpy.mockRestore();
   });
   it("should set the aria-describedby with the descId if provided", async () => {
-    render(<Icon name="E1X_ico_font" desc="description" descId="descId" />);
+    render(<Icon name="Tru_icon-139" desc="description" descId="descId" />);
 
     const icon = await screen.getByRole("img");
 

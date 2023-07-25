@@ -23,7 +23,7 @@ const SearchableIcons = () => {
    * t3 = advanced stacked icons - advanced icons made up of fragments and/or core icons that have set colors or color palette options
    */
   useEffect(() => {
-    let iconsAsArray = Object.entries(ICONS);
+    let iconsAsArray = Object.entries(ICONS).sort();
     let iconOptions = iconsAsArray.filter(
       (icon) =>
         icon[1].tags.some(
@@ -101,6 +101,7 @@ const SearchableIcons = () => {
                 alignItems: "center",
                 width: "20%",
                 boxShadow: "0 2px 2px 0 lightgrey",
+                textAlign: "center",
               }}
             >
               <Icon
@@ -112,7 +113,7 @@ const SearchableIcons = () => {
               />
               <p
                 style={{
-                  fontSize: "1.15em",
+                  fontSize: "1em",
                   fontWeight: "bold",
                 }}
                 key={`${icon}label`}

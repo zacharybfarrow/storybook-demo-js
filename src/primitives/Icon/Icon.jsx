@@ -10,11 +10,20 @@ iconJson.icons.forEach((icon) => {
 });
 
 export const IconSizes = Object.freeze({
-  XS: "2rem",
+  XS: "1.5rem",
   SMALL: "3rem",
   MEDIUM: "4rem",
   LARGE: "5rem",
   XL: "6rem",
+});
+
+// The following icons require a custom viewBox to be set
+export const CustomViewBoxes = Object.freeze({
+  "E1X_ico_font-96": "0 0 2655 1024",
+  "E1X_ico_font-97": "0 0 4032 1024",
+  "E1X_ico_font-98": "0 0 3072 1024",
+  "E1X_ico_font-107": "0 0 3898 1024",
+  "E1X_ico_font-119": "0 0 5559 1024",
 });
 
 /**
@@ -51,6 +60,9 @@ export default function Icon({
     );
   }
 
+  // Get custom width if present
+  const customWidth = ICONS[name].width ? ICONS[name].width : null;
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -58,8 +70,8 @@ export default function Icon({
       id={id}
       width={IconSizes[size.toUpperCase()]}
       height={IconSizes[size.toUpperCase()]}
-      viewBox="0 0 1024 1024"
-      className={tooltip ? "pointer-events-auto" : "pointer-events-none"}
+      viewBox={customWidth ? `0 0 ${customWidth} 1024` : "0 0 1024 1024"}
+      className={tooltip ? "icon-tooltip" : "icon-no-tooltip"}
       aria-labelledby={titleId}
       aria-describedby={descId}
       {...props}
