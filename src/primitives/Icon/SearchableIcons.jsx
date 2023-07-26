@@ -6,6 +6,7 @@ const SearchableIcons = () => {
   const [filter, setFilter] = useState("");
   const [showFragments, setShowFragments] = useState(false);
   const [options, setOptions] = useState([]);
+  const [alert, setAlert] = useState({ hidden: true, message: "" });
 
   function handleChange(e) {
     setFilter(e.target.value);
@@ -39,8 +40,47 @@ const SearchableIcons = () => {
     setOptions(iconNames);
   }, [filter, showFragments]);
 
+  const copyToClipboard = (icon) => {
+    navigator.clipboard.writeText(icon).then(
+      // success
+      () => {
+        setAlert({ hidden: false, message: "Icon name copied." });
+        setTimeout(() => setAlert({ hidden: true, message: "" }), 1750);
+      },
+      // failure
+      () => {
+        setAlert({ hidden: false, message: "Error copying icon name." });
+        setTimeout(setAlert({ hidden: true, message: "" }), 1750);
+      }
+    );
+  };
+
   return (
     <>
+      <div
+        role="alert"
+        id="copyAlert"
+        style={{
+          display: alert.hidden ? "none" : "flex",
+          position: "absolute",
+          top: "2vh",
+          left: "80vw",
+          right: "0",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "15vw",
+          height: "5vh",
+          border: "solid grey 1px",
+          borderRadius: "12px",
+          textAlign: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 2px 0 lightgrey",
+          backgroundColor: "white",
+        }}
+      >
+        {alert.message}
+      </div>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <input
           label="Search..."
@@ -112,6 +152,7 @@ const SearchableIcons = () => {
                 tooltip
               />
               <p
+                id={`${icon}label`}
                 style={{
                   fontSize: "1em",
                   fontWeight: "bold",
@@ -120,6 +161,9 @@ const SearchableIcons = () => {
               >
                 {icon}
               </p>
+              <button role="button" onClick={() => copyToClipboard(icon)}>
+                Copy <b>Name</b> to Clipboard
+              </button>
             </div>
           );
         })}

@@ -1,5 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen, cleanup } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import * as IconImpl from "./Icon";
 import SearchableIcons from "./SearchableIcons";
 
@@ -132,6 +133,43 @@ describe("Searchable Icons Functionality", function () {
 
     expect(iconFrags).toStrictEqual([]);
     expect(iconOptions.length).toBe(1);
+  });
+  test("Clicking copy button should copy icon name to clipboard", async () => {
+    render(<SearchableIcons />);
+    render(<input data-testID="testInput" />);
+    const user = userEvent.setup({ writeToClipboard: true });
+
+    const firstIconButton = await screen.getAllByRole("button")[0];
+    const firstIconLabel = await screen.getAllByText("E1X", {
+      exact: false,
+    })[0];
+    const testInput = await screen.getByTestId("testInput");
+    await user.click(firstIconButton);
+    testInput.focus();
+    await user.paste();
+
+    expect(testInput.value).toBe(firstIconLabel.innerHTML);
+  });
+  test("Clicking copy button should cause alert to become visible", async () => {
+    render(<SearchableIcons />);
+
+    const firstIconButton = await screen.getAllByRole("button")[0];
+    await fireEvent.click(firstIconButton);
+    const alert = await screen.findByRole("alert");
+    const alertStyles = window.getComputedStyle(alert);
+
+    expect(alertStyles.display).not.toBe("none");
+  });
+  test("Copy button alert should close again after 1.75 seconds", async () => {
+    jest.useFakeTimers();
+    jest.spyOn(global, "setTimeout");
+    render(<SearchableIcons />);
+
+    const firstIconButton = await screen.getAllByRole("button")[0];
+    await fireEvent.click(firstIconButton);
+
+    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1750);
+    jest.useRealTimers();
   });
   afterEach(() => {
     jest.restoreAllMocks();
