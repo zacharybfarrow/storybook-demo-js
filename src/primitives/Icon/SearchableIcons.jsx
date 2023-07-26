@@ -62,7 +62,7 @@ const SearchableIcons = () => {
         id="copyAlert"
         style={{
           display: alert.hidden ? "none" : "flex",
-          position: "absolute",
+          position: "fixed",
           top: "2vh",
           left: "80vw",
           right: "0",
@@ -136,7 +136,7 @@ const SearchableIcons = () => {
                 flexDirection: "column",
                 border: "solid grey 1px",
                 borderRadius: "12px",
-                padding: "10px",
+                paddingTop: "10px",
                 margin: "10px",
                 alignItems: "center",
                 width: "20%",
@@ -161,8 +161,22 @@ const SearchableIcons = () => {
               >
                 {icon}
               </p>
-              <button role="button" onClick={() => copyToClipboard(icon)}>
-                Copy <b>Name</b> to Clipboard
+              <button
+                role="button"
+                onClick={() => copyToClipboard(icon)}
+                style={{
+                  backgroundColor: "lightgrey",
+                  width: "100%",
+                  borderBottomLeftRadius: "12px",
+                  borderBottomRightRadius: "12px",
+                  borderTopColor: "grey",
+                  borderTopWidth: "1px",
+                  padding: "4px",
+                  fontSize: "12px",
+                  verticalAlign: "middle",
+                }}
+              >
+                Copy Name to Clipboard
               </button>
             </div>
           );
