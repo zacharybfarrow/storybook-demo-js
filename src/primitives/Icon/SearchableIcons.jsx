@@ -57,30 +57,6 @@ const SearchableIcons = () => {
 
   return (
     <>
-      <div
-        role="alert"
-        id="copyAlert"
-        style={{
-          display: alert.hidden ? "none" : "flex",
-          position: "fixed",
-          top: "2vh",
-          left: "80vw",
-          right: "0",
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "15vw",
-          height: "5vh",
-          border: "solid grey 1px",
-          borderRadius: "12px",
-          textAlign: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 2px 2px 0 lightgrey",
-          backgroundColor: "white",
-        }}
-      >
-        {alert.message}
-      </div>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <input
           label="Search..."
@@ -181,6 +157,30 @@ const SearchableIcons = () => {
             </div>
           );
         })}
+      </div>
+      <div
+        role="alert"
+        id="copyAlert"
+        style={{
+          display: alert.hidden ? "none" : "flex",
+          position: "fixed",
+          top: "2vh",
+          left: "80vw",
+          right: "0",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "15vw",
+          height: "5vh",
+          border: "solid grey 1px",
+          borderRadius: "12px",
+          textAlign: "center",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 2px 0 lightgrey",
+          backgroundColor: "white",
+        }}
+      >
+        {alert.message}
       </div>
     </>
   );
